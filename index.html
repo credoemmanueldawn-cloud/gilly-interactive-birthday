@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Gilly, My Babyyy ♡</title>
+<style>
+:root{
+  --cream:#fff8f4;
+  --paper:#fffdfb;
+  --pink:#e7b5b7;
+  --rose:#b85f68;
+  --wine:#6b3038;
+  --brown:#4b3535;
+  --soft:#f5e5e1;
+  --gold:#d6ae79;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#f1e5e1;
+  color:var(--brown);
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
+}
+button{font:inherit}
+.screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+#opening{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:radial-gradient(circle at 50% 35%,#fffdfb 0,#f8e8e5 50%,#efd8d4 100%);
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#opening.hide{opacity:0;visibility:hidden;pointer-events:none}
+.open-wrap{text-align:center;max-width:560px}
+.kicker{
+  letter-spacing:5px;
+  font:12px Arial,sans-serif;
+  color:var(--rose);
+  text-transform:uppercase;
+  margin-bottom:20px
+}
+.envelope{
+  width:260px;height:175px;
+  margin:0 auto 30px;
+  position:relative;
+  cursor:pointer;
+  filter:drop-shadow(0 15px 20px rgba(92,48,48,.18));
+}
+.env-body{
+  position:absolute;inset:0;
+  background:#fff8f3;
+  border:1px solid #e3c9c3;
+  border-radius:5px;
+  overflow:hidden;
+}
+.env-body:before,.env-body:after{
+  content:"";position:absolute;bottom:0;width:0;height:0;
+  border-style:solid;
+}
+.env-body:before{
+  left:0;border-width:0 0 135px 130px;border-color:transparent transparent #f0d8d4 transparent
+}
+.env-body:after{
+  right:0;border-width:135px 0 0 130px;border-color:transparent transparent transparent #efd4d1
+}
+.flap{
+  position:absolute;z-index:3;top:0;left:0;width:0;height:0;
+  border-left:130px solid transparent;border-right:130px solid transparent;
+  border-top:92px solid #e8c4c1;
+  transform-origin:top center;
+  transition:transform .8s ease;
+}
+.envelope.open .flap{transform:rotateX(180deg)}
+.seal{
+  position:absolute;z-index:5;left:50%;top:66px;transform:translateX(-50%);
+  width:48px;height:48px;border-radius:50%;
+  background:var(--rose);color:white;display:grid;place-items:center;
+  font-size:23px;box-shadow:0 5px 10px #9b555c55;
+}
+.open-title{
+  font-size:clamp(35px,7vw,58px);
+  font-style:italic;font-weight:normal;color:var(--wine);margin:0 0 8px
+}
+.open-sub{font-size:17px;margin:0 0 24px;color:#775b5b}
+.open-btn{
+  border:0;background:var(--wine);color:white;
+  padding:13px 25px;border-radius:30px;cursor:pointer;
+  letter-spacing:1px;box-shadow:0 8px 20px #6b303833;
+}
+#site{display:none}
+#site.show{display:block}
+.hero{
+  min-height:100vh;
+  display:grid;place-items:center;text-align:center;
+  padding:60px 22px;
+  position:relative;
+  background:
+    radial-gradient(circle at 15% 20%,#f7dfe0 0 4%,transparent 5%),
+    radial-gradient(circle at 85% 75%,#f2d9d7 0 5%,transparent 6%),
+    var(--cream);
+  overflow:hidden;
+}
+.hero-inner{max-width:850px;position:relative;z-index:2}
+.tiny{letter-spacing:6px;font:12px Arial,sans-serif;color:var(--rose)}
+.hero h1{
+  font-size:clamp(65px,13vw,145px);line-height:.75;
+  font-style:italic;font-weight:normal;color:var(--wine);margin:30px 0 5px
+}
+.hero .name{font-size:clamp(60px,11vw,120px);color:#c27a80;font-style:italic}
+.hero p{font-size:20px;margin:25px auto;max-width:600px;line-height:1.7}
+.scroll{
+  display:inline-block;margin-top:25px;color:var(--wine);
+  text-decoration:none;font:12px Arial,sans-serif;letter-spacing:2px;
+}
+.scroll span{display:block;font-size:22px;margin-top:8px}
+.float-heart{position:absolute;color:#d68b91;opacity:.5;font-size:28px;animation:float 6s infinite ease-in-out}
+.h1{left:9%;top:20%}.h2{right:10%;top:30%;animation-delay:1s}.h3{left:18%;bottom:18%;animation-delay:2s}.h4{right:18%;bottom:15%;animation-delay:3s}
+@keyframes float{50%{transform:translateY(-25px) rotate(8deg)}}
+
+section{padding:95px 22px}
+.section-inner{max-width:1050px;margin:auto}
+.section-tag{
+  font:11px Arial,sans-serif;letter-spacing:4px;color:var(--rose);
+  text-transform:uppercase;text-align:center
+}
+.section-title{
+  font-size:clamp(40px,7vw,70px);font-style:italic;font-weight:normal;
+  color:var(--wine);text-align:center;margin:10px 0 15px
+}
+.section-copy{text-align:center;max-width:700px;margin:0 auto 40px;line-height:1.8;font-size:17px}
+
+.memories{background:#f8ece8}
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  max-width:900px;margin:auto
+}
+.polaroid{
+  background:white;padding:10px 10px 38px;
+  box-shadow:0 10px 22px #6548481c;
+  transform:rotate(-2deg);transition:.3s;position:relative
+}
+.polaroid:nth-child(2){transform:rotate(2deg);margin-top:25px}
+.polaroid:nth-child(3){transform:rotate(-1deg)}
+.polaroid:nth-child(4){transform:rotate(2deg);margin-top:-10px}
+.polaroid:nth-child(5){transform:rotate(-3deg);margin-top:20px}
+.polaroid:nth-child(6){transform:rotate(1deg)}
+.polaroid:hover{transform:translateY(-8px) rotate(0)}
+.photo-box{
+  aspect-ratio:1/1.05;background:#f4e7e3;
+  display:grid;place-items:center;overflow:hidden
+}
+.photo-box img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-label{text-align:center;color:#a68a87;font:11px Arial,sans-serif;letter-spacing:1px}
+.caption{text-align:center;margin-top:10px;font-style:italic;color:#76575a}
+
+.letter-section{background:var(--cream)}
+.letter-card{
+  max-width:780px;margin:auto;background:var(--paper);
+  border:1px solid #ead8d2;padding:55px clamp(25px,7vw,75px);
+  box-shadow:0 20px 45px #65484812;position:relative
+}
+.letter-card:before{
+  content:"♡";position:absolute;top:18px;right:25px;color:#c57a80;font-size:28px
+}
+.letter-card p{font-size:17px;line-height:1.9;margin:0 0 20px}
+.signature{text-align:right;font-size:25px;color:var(--wine);font-style:italic;margin-top:30px}
+
+.gift-section{background:#f7e7e4;text-align:center}
+.gift{
+  width:180px;height:150px;margin:45px auto 20px;position:relative;cursor:pointer;
+  transition:transform .3s
+}
+.gift:hover{transform:translateY(-7px)}
+.box{
+  position:absolute;bottom:0;left:10px;width:160px;height:105px;
+  background:#c77a82;border-radius:4px;
+  box-shadow:0 12px 20px #6b303826
+}
+.box:after{content:"";position:absolute;left:67px;top:0;width:25px;height:100%;background:#efd0c9}
+.lid{
+  position:absolute;top:27px;left:0;width:180px;height:34px;
+  background:#b9626b;border-radius:5px;z-index:2
+}
+.ribbon-v{
+  position:absolute;left:73px;top:-2px;width:35px;height:42px;
+  border:6px solid #efd0c9;border-bottom:0;border-radius:50% 50% 0 0;
+  z-index:3
+}
+.bow{
+  position:absolute;top:0;left:58px;z-index:4;color:#efd0c9;font-size:44px
+}
+.gift-note{
+  max-width:550px;margin:0 auto;font-size:17px;line-height:1.8
+}
+.surprise{
+  max-width:600px;margin:30px auto 0;padding:25px;
+  background:#fffaf7;border:1px dashed #d2aaa5;display:none
+}
+.surprise.show{display:block;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+
+.music-section{background:var(--cream);text-align:center}
+.music-box{
+  max-width:600px;margin:30px auto;background:#fff;border:1px solid #ead8d2;
+  padding:25px;box-shadow:0 12px 30px #65484812
+}
+.music-box button{
+  border:0;background:var(--rose);color:white;border-radius:50%;
+  width:58px;height:58px;font-size:22px;cursor:pointer
+}
+.music-status{margin-top:14px;color:#76575a;font-size:14px}
+.audio-note{font:12px Arial,sans-serif;color:#967d79;margin-top:12px}
+
+.final{
+  min-height:75vh;background:#6b3038;color:#fff8f4;
+  display:grid;place-items:center;text-align:center;padding:70px 22px
+}
+.final h2{font-size:clamp(48px,8vw,90px);font-style:italic;font-weight:normal;margin:0 0 20px}
+.final p{font-size:19px;line-height:1.8;max-width:650px;margin:auto}
+.final .love{font-size:30px;color:#f3c9ca;margin-top:30px}
+footer{text-align:center;padding:22px;background:#4e252b;color:#eacfd0;font:11px Arial,sans-serif;letter-spacing:1px}
+
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:90}
+.pop-heart{
+  position:absolute;bottom:-30px;color:#c96e78;font-size:20px;
+  animation:rise 4s linear forwards
+}
+@keyframes rise{
+  to{transform:translateY(-110vh) translateX(var(--x)) rotate(30deg);opacity:0}
+}
+
+@media(max-width:800px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .gallery{grid-template-columns:1fr 1fr;gap:12px}
+  .polaroid{padding:7px 7px 28px}
+  .caption{font-size:13px}
+  .letter-card{padding:40px 22px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="opening" class="screen">
+  <div class="open-wrap">
+    <div class="kicker">A little birthday surprise</div>
+    <div class="envelope" id="envelope" onclick="openCard()">
+      <div class="flap"></div>
+      <div class="env-body"></div>
+      <div class="seal">♡</div>
+    </div>
+    <h1 class="open-title">For my babyyy</h1>
+    <p class="open-sub">I made something small for your special day.</p>
+    <button class="open-btn" onclick="openCard()">Open your birthday card ♡</button>
+  </div>
+</div>
+
+<div id="hearts"></div>
+
+<div id="site">
+
+  <section class="hero" id="home">
+    <div class="float-heart h1">♡</div>
+    <div class="float-heart h2">♡</div>
+    <div class="float-heart h3">♡</div>
+    <div class="float-heart h4">♡</div>
+
+    <div class="hero-inner">
+      <div class="tiny">A SPECIAL DAY FOR A SPECIAL GIRL</div>
+      <h1>Happy<br><span class="name">Birthday, Gilly</span></h1>
+      <p>To the girl who made me realize how special birthdays can be. ♡</p>
+      <a class="scroll" href="#memories">SCROLL TO SEE YOUR SURPRISE <span>↓</span></a>
+    </div>
+  </section>
+
+  <section class="memories" id="memories">
+    <div class="section-inner">
+      <div class="section-tag">Our little memories</div>
+      <h2 class="section-title">Moments with my babyyy</h2>
+      <p class="section-copy">
+        Here are some of our favorite pictures together.
+      </p>
+
+      <div class="gallery">
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo1.jpg" alt="photo 1"></div>
+          <div class="caption">one of my favorites</div>
+        </div>
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo2.jpg" alt="photo 2"></div>
+          <div class="caption">you & me</div>
+        </div>
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo3.jpg" alt="photo 3"></div>
+          <div class="caption">my favorite girl</div>
+        </div>
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo4.jpg" alt="photo 4"></div>
+          <div class="caption">another little memory</div>
+        </div>
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo5.jpg" alt="photo 5"></div>
+          <div class="caption">this moment ♡</div>
+        </div>
+        <div class="polaroid">
+          <div class="photo-box"><img src="photo6.jpg" alt="photo 6"></div>
+          <div class="caption">always us</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter-section" id="letter">
+    <div class="section-inner">
+      <div class="section-tag">A letter for you</div>
+      <h2 class="section-title">Happy Birthday, my babyyy</h2>
+
+      <div class="letter-card">
+        <p>
+          Happyy Birthday my babyyy, ikaw yung babae na nagparealize sa akin
+          how special birthdays are and gusto ko din na maparamdam sayo yun
+          kaya I made this simple digital greeting card to greet you a happy
+          and blessed birthday.
+        </p>
+        <p>
+          You're already 20 years old na and I'd like to welcome you sa
+          adulthood HAHAHAHAHAHA. Eme lang, syempre you're still my babyy girl
+          and I'm always here for youu.
+        </p>
+        <p>
+          I know na ayaw mo pa na mag 20 kasi naffeel mo na matanda kana,
+          but kagaya ng lagi ko sinasabi, age is just a number and nasa'yo ang
+          decision kung paano mo gagamitin ang buhay mo.
+        </p>
+        <p>
+          Always remember babyy na andito lang kami ni Lord naka support sayo,
+          and kung ano man ang challenges na pinagdadaanan mo, andito lang ako
+          naka support sayoo.
+        </p>
+        <p>
+          I'd like to wish you a happiest birthday myy babyy.
+          I lovee youu soo much alwayss. ♡
+        </p>
+        <div class="signature">Always here for you,<br>your babyyy ♡</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gift-section" id="surprise">
+    <div class="section-inner">
+      <div class="section-tag">One more thing</div>
+      <h2 class="section-title">I have a little surprise</h2>
+      <p class="gift-note">Click the gift. Don't be shy, birthday girl. 🎁</p>
+
+      <div class="gift" onclick="openGift()" aria-label="Open gift">
+        <div class="bow">⌁</div>
+        <div class="ribbon-v"></div>
+        <div class="lid"></div>
+        <div class="box"></div>
+      </div>
+
+      <div class="surprise" id="surpriseBox">
+        <h3 style="font-size:30px;font-style:italic;color:#6b3038;margin-top:0">My wish for you ♡</h3>
+        <p style="line-height:1.8">
+          I hope your 20th year brings you more reasons to smile, more moments
+          that make you proud, and the courage to keep going when things get
+          difficult. I hope you always remember that you are loved, supported,
+          and never alone.
+        </p>
+        <p style="font-style:italic;color:#b85f68">Happy 20th, Gilly. ♡</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="music-section" id="music">
+    <div class="section-inner">
+      <div class="section-tag">A song for you</div>
+      <h2 class="section-title">Press play ♡</h2>
+      <p class="section-copy">
+        Press play to listen to your birthday song.
+      </p>
+
+      <div class="music-box">
+        <button id="musicBtn" onclick="toggleMusic()">▶</button>
+        <div class="music-status" id="musicStatus">Your birthday song</div>
+        <div class="audio-note">If the music doesn't start, press the play button. Browsers block autoplay.</div>
+        <audio id="audio" loop>
+          <source src="song.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div>
+      <div class="tiny" style="color:#f1c4c6">FOR MY BABYY GIRL</div>
+      <h2>Happy Birthday, Gilly ♡</h2>
+      <p>
+        Thank you for being understanding, for loving me, and for always giving
+        me the assurance I need. I appreciate you more than I can put into
+        words.
+      </p>
+      <div class="love">I lovee youu soo much alwayss. ♡</div>
+    </div>
+  </section>
+
+  <footer>Made with love for Gilly ♡</footer>
+</div>
+
+<script>
+function openCard(){
+  const env=document.getElementById("envelope");
+  env.classList.add("open");
+  setTimeout(()=>{
+    document.getElementById("opening").classList.add("hide");
+    document.getElementById("site").classList.add("show");
+    burstHearts();
+  },500);
+}
+
+function openGift(){
+  const box=document.getElementById("surpriseBox");
+  box.classList.toggle("show");
+  burstHearts();
+}
+
+function burstHearts(){
+  const container=document.getElementById("hearts");
+  for(let i=0;i<18;i++){
+    const h=document.createElement("div");
+    h.className="pop-heart";
+    h.textContent=["♡","♥","✦"][Math.floor(Math.random()*3)];
+    h.style.left=(Math.random()*100)+"vw";
+    h.style.setProperty("--x",((Math.random()-.5)*180)+"px");
+    h.style.animationDelay=(Math.random()*.7)+"s";
+    h.style.fontSize=(14+Math.random()*20)+"px";
+    container.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  }
+}
+
+function toggleMusic(){
+  const audio=document.getElementById("audio");
+  const btn=document.getElementById("musicBtn");
+  const status=document.getElementById("musicStatus");
+
+  if(audio.paused){
+    audio.play().then(()=>{
+      btn.textContent="Ⅱ";
+      status.textContent="Playing your birthday song ♡";
+    }).catch(()=>{
+      status.textContent="Add song.mp3 to the same folder first or press play.";
+    });
+  }else{
+    audio.pause();
+    btn.textContent="▶";
+    status.textContent="Your birthday song";
+  }
+}
+
+// show/hide labels based on image load
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.photo-box').forEach(box => {
+    const img = box.querySelector('img');
+    const label = box.querySelector('.photo-label');
+    if(!img) return;
+    img.addEventListener('load', ()=>{ if(label) label.style.display='none'; img.style.display='block'; });
+    img.addEventListener('error', ()=>{ if(label) label.style.display='block'; img.style.display='none'; });
+    if(img.complete){ if(img.naturalWidth) img.dispatchEvent(new Event('load')); else img.dispatchEvent(new Event('error')); }
+  });
+});
+
+/*
+PHOTO INSTRUCTIONS
+Put your images named photo1.jpg ... photo6.jpg in the SAME folder as this HTML file.
+MUSIC INSTRUCTIONS
+Put an MP3 file named "song.mp3" in the SAME folder as this HTML file.
+*/
+</script>
+</body>
+</html>
